@@ -52,24 +52,24 @@ public class Building {
     public int avaibleApartments() {
         int counter = 0;
         for (int i = 0; i < APARTMENTS_SIZE; i++) {
-            if(apartmentsBulding[i] != null){
-            if (apartmentsBulding[i].getTenantApartment() == null) {
-                counter += 1;
+            if (apartmentsBulding[i] != null) {
+                if (apartmentsBulding[i].getTenantApartment() == null) {
+                    counter += 1;
+                }
             }
         }
-    }
         return counter;
     }
 
     public double totalRenthMonth() {
         double totalRenthMonth = 0;
         for (int i = 0; i < APARTMENTS_SIZE; i++) {
-            if(apartmentsBulding[i] != null){
-            if (apartmentsBulding[i].getTenantApartment() != null) {
-                totalRenthMonth += apartmentsBulding[i].getMonthlyRent();
+            if (apartmentsBulding[i] != null) {
+                if (apartmentsBulding[i].getTenantApartment() != null) {
+                    totalRenthMonth += apartmentsBulding[i].getMonthlyRent();
 
+                }
             }
-        }
 
         }
 
@@ -79,15 +79,16 @@ public class Building {
     public int countRentedApartmentsByOwner(String idOwner) {
         int counter = 0;
         for (int i = 0; i < APARTMENTS_SIZE; i++) {
-            if(apartmentsBulding[i] != null){
-            if (apartmentsBulding[i].getTenantApartment() != null && apartmentsBulding[i].getOwnerApartment() != null) {
-                if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
-                    counter += 1;
+            if (apartmentsBulding[i] != null) {
+                if (apartmentsBulding[i].getTenantApartment() != null
+                        && apartmentsBulding[i].getOwnerApartment() != null) {
+                    if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
+                        counter += 1;
+                    }
                 }
-            }
 
+            }
         }
-    }
 
         return counter;
 
@@ -96,14 +97,14 @@ public class Building {
     public int countApartmentsOwner(String idOwner) {
         int counter = 0;
         for (int i = 0; i < APARTMENTS_SIZE; i++) {
-            if(apartmentsBulding[i] != null){
-            if (apartmentsBulding[i].getOwnerApartment() != null) {
-                if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
-                    counter += 1;
+            if (apartmentsBulding[i] != null) {
+                if (apartmentsBulding[i].getOwnerApartment() != null) {
+                    if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
+                        counter += 1;
+                    }
                 }
             }
         }
-    }
 
         return counter;
 
@@ -112,14 +113,14 @@ public class Building {
     public double countTotalRenthMonthOwner(String idOwner) {
         double totalRent = 0;
         for (int i = 0; i < APARTMENTS_SIZE; i++) {
-            if(apartmentsBulding[i] != null){
-            if (apartmentsBulding[i].getOwnerApartment() != null) {
-                if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
-                    totalRent += apartmentsBulding[i].getMonthlyRent();
+            if (apartmentsBulding[i] != null) {
+                if (apartmentsBulding[i].getOwnerApartment() != null) {
+                    if (apartmentsBulding[i].getOwnerApartment().getIdNum().equals(idOwner)) {
+                        totalRent += apartmentsBulding[i].getMonthlyRent();
+                    }
                 }
             }
         }
-    }
 
         return totalRent;
 

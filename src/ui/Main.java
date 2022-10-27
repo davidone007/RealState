@@ -258,14 +258,12 @@ public class Main {
 			while (optionPhone > 4 || optionPhone < 0 || optionPhone == -2) {
 				System.out.println("Este apartado no acepta letras, ni numeros decimales. Escriba un dato valido");
 				System.out.println("Recuerde escoger una opcion valida");
-				optionPhone = (validateIntegerOption()-1);
+				optionPhone = (validateIntegerOption() - 1);
 			}
 			System.out.println("Escriba el numero de contacto del arrendatario");
 			String phoneNum = reader.next();
 
 			realStateSystem.addTenantToRealState(typeId, idNum, name, phoneNum, optionPhone);
-
-			System.out.println(msj);
 
 			System.out.println("\n" + "Escriba el id del apartamento del que va a ser arrendatario");
 			String idApartment = reader.next();
@@ -276,6 +274,7 @@ public class Main {
 
 		} else {
 			msj = "El identificador de esta persona ya existe, por favor elige otro";
+			System.out.println(msj);
 		}
 
 	}
@@ -298,7 +297,7 @@ public class Main {
 			while (optionPhone > 4 || optionPhone < 0 || optionPhone == -2) {
 				System.out.println("Este apartado no acepta letras, ni numeros decimales. Escriba un dato valido");
 				System.out.println("Recuerde escoger una opcion valida");
-				optionPhone = (validateIntegerOption()-1);
+				optionPhone = (validateIntegerOption() - 1);
 			}
 			System.out.println("Escriba el numero de contacto del dueño");
 			String phoneNum = reader.next();
@@ -308,8 +307,6 @@ public class Main {
 			String numAccount = reader.next();
 
 			realStateSystem.addOwnerToRealState(typeId, idNum, name, phoneNum, optionPhone, nameBank, numAccount);
-
-			System.out.println(msj);
 
 			do {
 				System.out.println("\n" + "Escriba el id del apartamento del que es dueño");
@@ -331,6 +328,8 @@ public class Main {
 
 		} else {
 			msj = "El identificador de esta persona ya existe, por favor elige otro";
+			System.out.println(msj);
+
 		}
 
 	}
@@ -349,7 +348,7 @@ public class Main {
 		System.out.println(msj);
 	}
 
-	public void uiItsRented(){
+	public void uiItsRented() {
 		System.out.println("Escriba el identificador del edificio que desea consultar");
 		String idBuilding = reader.next();
 		System.out.println("Escriba el identificador del apartamento que desea consultar");
