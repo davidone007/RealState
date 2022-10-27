@@ -197,15 +197,15 @@ public class RealStateSystem {
     }
 
     public String selectOwnerApartment(String idApartment, String idBuilding, String idOwner) {
-        String msj = "";
+        String msj = "No se pudo añadir el dueño, no se ha encontrado el apartamento";
         int posOwner = searchPersonById(idOwner);
         int posBuilding = searchBuildingById(idBuilding);
         int counter = 0;
 
         if (posBuilding != -1 && posOwner != -1) {
             int posApartment = buildingsRealState[posBuilding].searchApartmentById(idApartment);
-            if (buildingsRealState[posBuilding].getApartmentsBulding()[posApartment].getOwnerApartment() == null
-                    && posApartment != -1) {
+            if(posApartment != -1){
+            if (buildingsRealState[posBuilding].getApartmentsBulding()[posApartment].getOwnerApartment() == null) {
                 Person owner = usersRealState[posOwner];
                 buildingsRealState[posBuilding].getApartmentsBulding()[posApartment]
                         .setOwnerApartment((Owner) owner);
@@ -222,9 +222,9 @@ public class RealStateSystem {
                 }
 
             }
+        }
 
         } else {
-            usersRealState[posOwner] = null;
             msj = "No se pudo añadir el dueño debido a que los datos ingresados de la informacion del edificio y apartamento fueron invalidos, revisa los datos ingresados y vuelve a intentarlo ";
             for (int i = 0; i < SIZE_BUILDINGS; i++) {
                 if (buildingsRealState[i] != null) {
