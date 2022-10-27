@@ -28,8 +28,8 @@ public class RealStateSystem {
                     }
                 }
                 double totalRentLessAdmin = totalRent - (totalRent * 0.10);
-                msj = "El dueño tiene en su poder " + totalOwnerApartments + "\n" +
-                        "Sus arrendamientos generan " + totalRent +
+                msj = "El dueño tiene en su poder " + totalOwnerApartments + " apartamento/s" + "\n" +
+                        "Sus arrendamientos generan " + totalRent + "\n" +
                         "Por concepto de arrendamiento debe recibir (Recuerde que se le resta un 10% por administracion) "
                         + totalRentLessAdmin;
 
@@ -204,25 +204,25 @@ public class RealStateSystem {
 
         if (posBuilding != -1 && posOwner != -1) {
             int posApartment = buildingsRealState[posBuilding].searchApartmentById(idApartment);
-            if(posApartment != -1){
-            if (buildingsRealState[posBuilding].getApartmentsBulding()[posApartment].getOwnerApartment() == null) {
-                Person owner = usersRealState[posOwner];
-                buildingsRealState[posBuilding].getApartmentsBulding()[posApartment]
-                        .setOwnerApartment((Owner) owner);
-                msj = "Persona registrada correctamente como propietaria del apartamento";
-            } else {
-                msj = "El apartamento solicitado ya posee un dueño o no fue encontrado, asegurese de ingresar bien los datos";
-                for (int i = 0; i < SIZE_BUILDINGS; i++) {
-                    if (buildingsRealState[i] != null) {
-                        counter += buildingsRealState[i].countRentedApartmentsByOwner(idOwner);
+            if (posApartment != -1) {
+                if (buildingsRealState[posBuilding].getApartmentsBulding()[posApartment].getOwnerApartment() == null) {
+                    Person owner = usersRealState[posOwner];
+                    buildingsRealState[posBuilding].getApartmentsBulding()[posApartment]
+                            .setOwnerApartment((Owner) owner);
+                    msj = "Persona registrada correctamente como propietaria del apartamento";
+                } else {
+                    msj = "El apartamento solicitado ya posee un dueño o no fue encontrado, asegurese de ingresar bien los datos";
+                    for (int i = 0; i < SIZE_BUILDINGS; i++) {
+                        if (buildingsRealState[i] != null) {
+                            counter += buildingsRealState[i].countRentedApartmentsByOwner(idOwner);
+                        }
                     }
-                }
-                if (counter == 0) {
-                    usersRealState[posOwner] = null;
-                }
+                    if (counter == 0) {
+                        usersRealState[posOwner] = null;
+                    }
 
+                }
             }
-        }
 
         } else {
             msj = "No se pudo añadir el dueño debido a que los datos ingresados de la informacion del edificio y apartamento fueron invalidos, revisa los datos ingresados y vuelve a intentarlo ";
